@@ -56,6 +56,7 @@ build:
 ifneq (,$(wildcard $(CURDIR)/composer.json))
 	make composer
 endif
+	make model
 ifneq (,$(wildcard $(CURDIR)/package.json))
 	make npm
 endif
@@ -84,6 +85,14 @@ ifeq (,$(wildcard $(CURDIR)/package.json))
 	cd js && $(npm) run build
 else
 	npm run build
+endif
+
+.PHONY: model
+model:
+ifeq (,$(wildcard $(CURDIR)/model))
+	pip3 install "transformers[onnx]"
+	pip3 install "torch"
+	python3 -m transformers.onnx --model=bigscience/mt0-large --feature=seq2seq-lm model/
 endif
 
 # Removes the appstore build
