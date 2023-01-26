@@ -75,15 +75,15 @@ async function main(inputText, strategy, max_length, min_length, repetition_pena
 		}
 
 		const token = await id.data()
-		generation = preprocessor.decodeIds([...decoderInputData, ...token])
+
 		decoderInputData = Int32Array.from([...decoderInputData, ...token])
 
 		if (token[0] === T5_eos_token_id) {
 			break
 		}
-		console.log(generation)
 	}
+	generation = preprocessor.decodeIds([...decoderInputData])
 	return generation
 }
 
-console.log(await main(process.argv[4], process.argv[2], parseInt(process.argv[3]), 100, 1.5));
+console.log(await main(process.argv[4], process.argv[2], parseInt(process.argv[3]), 100, 1.2));
