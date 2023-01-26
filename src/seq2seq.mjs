@@ -21,7 +21,7 @@ async function main(inputText, strategy, max_length, min_length, repetition_pena
 	if (inputText === '-') {
 		inputText = await getStdin()
 	}
-	let preprocessor = await sentencePieceProcessor(null, fs.readFileSync(__dirname+"/../model/spiece.model"));
+	let preprocessor = await sentencePieceProcessor(null, fs.readFileSync(__dirname+"/../res/spiece.model"));
 
 	const session = await ort.InferenceSession.create(__dirname+'/../model/model.onnx');
 
