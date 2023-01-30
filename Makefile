@@ -90,9 +90,9 @@ endif
 .PHONY: model
 model:
 ifeq (,$(wildcard $(CURDIR)/model))
-	pip3 install "transformers[onnx]"
+	pip3 install "optimum[exporters]"
 	pip3 install "torch"
-	python3 -m transformers.onnx --model=bigscience/mt0-large --feature=seq2seq-lm model/
+	optimum-cli export onnx --model bigscience/mt0-xl --task seq2seq-lm --for-ort model/
 endif
 
 # Removes the appstore build
