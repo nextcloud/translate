@@ -4,9 +4,9 @@ declare(strict_types=1);
 // SPDX-FileCopyrightText: Joas Schilling <code@schilljs.com>
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
-namespace OCA\Llm\Migration;
+namespace OCA\Translate\Migration;
 
-use OCA\Llm\Helper\TAR;
+use OCA\Translate\Helper\TAR;
 use OCP\Http\Client\IClientService;
 use OCP\IConfig;
 use OCP\Migration\IOutput;
@@ -35,7 +35,7 @@ class InstallDeps implements IRepairStep {
 	}
 
 	public function run(IOutput $output): void {
-		$existingBinary = $this->config->getAppValue('llm', 'node_binary', '');
+		$existingBinary = $this->config->getAppValue('translate', 'node_binary', '');
 		if ($existingBinary !== '') {
 			$version = $this->testBinary($existingBinary);
 			if ($version === null) {
@@ -85,13 +85,7 @@ class InstallDeps implements IRepairStep {
 		}
 
 		// Write the app config
-		$this->config->setAppValue('recognize', 'node_binary', $binaryPath);
-
-		$supportsAVX = $this->isAVXSupported();
-		if ($isARM || $isMusl || !$supportsAVX) {
-			$output->info('Enabling purejs mode (isMusl='.$isMusl.', isARM='.$isARM.', supportsAVX='.$supportsAVX.')');
-			$this->config->setAppValue('recognize', 'tensorflow.purejs', 'true');
-		}
+		$this->config->setAppValue('translate', 'node_binary', $binaryPath);
 	}
 
 	protected function testBinary(string $binaryPath): ?string {

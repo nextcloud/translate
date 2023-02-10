@@ -25,7 +25,6 @@
     "@nextcloud/router": "^2.0.0",
     "@nextcloud/vue": "^5.4.0",
     "@tensorflow/tfjs": "^4.2.0",
-    "@tensorflow/tfjs-node": "^4.2.0",
     "get-stdin": "^9.0.0",
     "onnxruntime-node": "^1.13.1",
     "vue": "^2.7.0"

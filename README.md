@@ -3,18 +3,8 @@ SPDX-FileCopyrightText: Marcel Klehr <mklehr@gmx.net>
 SPDX-License-Identifier: CC0-1.0
 -->
 
-# Llm
+# Translate
 Place this app in **nextcloud/apps/**
-
-
-## Command
-Summarization is available via `occ llm:summarize "Your text here"`
-
-You can use this to register a talk command as follows:
-
-```
-./occ talk:command:add summary Summarizer "/path/to/php /path/to/occ llm:summarize {ARGUMENTS}" 2 3
-```
 
 ## Building the app
 

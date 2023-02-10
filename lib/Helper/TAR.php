@@ -30,7 +30,7 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>
  *
  */
-namespace OCA\Llm\Helper;
+namespace OCA\Translate\Helper;
 
 use Icewind\Streams\CallbackWrapper;
 
