@@ -92,7 +92,10 @@ model:
 ifeq (,$(wildcard $(CURDIR)/model))
 	pip3 install "optimum[exporters]"
 	pip3 install "torch"
-	optimum-cli export onnx --model bigscience/mt0-xl --task seq2seq-lm --for-ort model/
+	export LANGS="de-en  de-es  de-fr  de-zh  en-de  en-es  en-fr  en-zh  es-de  es-en  es-fr  fr-de  fr-en  fr-es  zh-de  zh-en"
+	for LANG in $LANGS; do
+		mkdir models/$LANG; optimum-cli export onnx --model Helsinki-NLP/opus-mt-$LANG --task seq2seq-lm --for-ort models/$LANG/
+	done
 endif
 
 # Removes the appstore build
