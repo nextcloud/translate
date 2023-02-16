@@ -66,4 +66,46 @@ class TranslateService
 			throw new \RuntimeException('Translate process failed');
 		}
 	}
+
+	/**
+	 * @param string $input
+	 * @param int $timeout
+	 * @throws \RuntimeException
+	 * @return string
+	 */
+	public function detect(string $text, int $timeout = 5*60) : string {
+		$command = [
+			$this->nodeBinary,
+			dirname(__DIR__, 2) . '/src/detect.mjs',
+			$text
+		];
+
+		$this->logger->debug('Running '.var_export($command, true));
+
+		$proc = new Process($command, __DIR__);
+		$proc->setTimeout($timeout);
+		try {
+			$proc->start();
+			$buffer = '';
+			$errOut = '';
+			foreach ($proc as $type => $data) {
+				if ($type !== $proc::OUT) {
+					$errOut .= $data;
+					continue;
+				}
+				$buffer .= $data;
+			}
+			if ($proc->getExitCode() !== 0) {
+				$this->logger->warning($errOut);
+				throw new \RuntimeException('Language detection process failed');
+			}
+			return $buffer;
+		} catch (ProcessTimedOutException $e) {
+			$this->logger->warning($errOut);
+			throw new \RuntimeException('Language detection process timeout');
+		} catch (RuntimeException $e) {
+			$this->logger->warning($errOut);
+			throw new \RuntimeException('Language detection process failed');
+		}
+	}
 }
