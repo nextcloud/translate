@@ -4,7 +4,6 @@ namespace OCA\Translate\Provider;
 
 use OCA\Translate\Service\TranslateService;
 use OCP\ICacheFactory;
-use OCP\IConfig;
 use OCP\Translation\ITranslationProvider;
 use Psr\Log\LoggerInterface;
 
@@ -37,7 +36,7 @@ class Translation implements ITranslationProvider {
 
 		$availableLanguages = [];
 		foreach ($directoryIterator as $dir) {
-			[$sourceLanguage, $targetLanguage] = explode('_', $dir);
+			[$sourceLanguage, $targetLanguage] = explode('-', $dir);
 			$availableLanguages[] = [
 				'from' => [
 					'code' => $sourceLanguage
@@ -57,12 +56,9 @@ class Translation implements ITranslationProvider {
 
 	public function translate(?string $fromLanguage, string $toLanguage, string $text): string {
 			$fromLanguage = $fromLanguage ?? $this->detectLanguage($text);
-			$cacheKey = $fromLanguage . '-' . $toLanguage . ':' . md5($text);
 			$model = $fromLanguage . '-' . $toLanguage;
 			try {
-				$result = $this->localCache[$cacheKey] ?? $this->translator->seq2seq($model, $text);
-				$this->localCache[$cacheKey] = $result;
-				return $result;
+				return $this->translator->seq2seq($model, $text);
 			}catch(\RuntimeException $e) {
 				$this->logger->warning('Translation failed with: ' . $e->getMessage(), ['exception' => $e]);
 				return '';
