@@ -5,6 +5,7 @@ namespace OCA\Translate\Provider;
 use OCA\Translate\Service\TranslateService;
 use OCP\ICacheFactory;
 use OCP\Translation\ITranslationProvider;
+use OCP\Translation\LanguageTuple;
 use Psr\Log\LoggerInterface;
 
 class Translation implements ITranslationProvider {
@@ -36,15 +37,11 @@ class Translation implements ITranslationProvider {
 
 		$availableLanguages = [];
 		foreach ($directoryIterator as $dir) {
-			[$sourceLanguage, $targetLanguage] = explode('-', $dir);
-			$availableLanguages[] = [
-				'from' => [
-					'code' => $sourceLanguage
-				],
-				'to' => [
-					'code' => $targetLanguage
-				],
-			];
+			if ($dir->isDot()) {
+				continue;
+			}
+			[$sourceLanguage, $targetLanguage] = explode('-', $dir->getFilename());
+			$availableLanguages[] = new LanguageTuple($sourceLanguage, $sourceLanguage, $targetLanguage, $targetLanguage);
 		}
 		$cache->set('languages', $availableLanguages, 3600);
 		return $availableLanguages;

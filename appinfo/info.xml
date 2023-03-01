@@ -5,7 +5,7 @@
     SPDX-FileCopyrightText: Marcel Klehr <mklehr@gmx.net>
     SPDX-License-Identifier: CC0-1.0
     -->
-    <id>llm</id>
+    <id>translate</id>
     <name>Translate</name>
     <summary>Machine translation in nextcloud</summary>
     <description><![CDATA[A large language model in nextcloud]]></description>
