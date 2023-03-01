@@ -6,11 +6,12 @@ namespace OCA\Translate\Provider;
 
 use OCA\Translate\Service\TranslateService;
 use OCP\ICacheFactory;
+use OCP\Translation\IDetectLanguageProvider;
 use OCP\Translation\ITranslationProvider;
 use OCP\Translation\LanguageTuple;
 use Psr\Log\LoggerInterface;
 
-class Translation implements ITranslationProvider {
+class Translation implements ITranslationProvider, IDetectLanguageProvider {
 	private ICacheFactory $cacheFactory;
 
 	private TranslateService $translator;
@@ -52,7 +53,7 @@ class Translation implements ITranslationProvider {
 
 	public function detectLanguage(string $text): ?string {
 		try {
-			return $this->translator->detect($text);
+			return trim($this->translator->detect($text));
 		} catch(\RuntimeException $e) {
 			$this->logger->warning('Language detection failed with: ' . $e->getMessage(), ['exception' => $e]);
 			return null;
@@ -63,7 +64,7 @@ class Translation implements ITranslationProvider {
 		$fromLanguage = $fromLanguage ?? $this->detectLanguage($text);
 		$model = $fromLanguage . '-' . $toLanguage;
 		try {
-			return $this->translator->seq2seq($model, $text);
+			return trim($this->translator->seq2seq($model, $text));
 		} catch(\RuntimeException $e) {
 			$this->logger->warning('Translation failed with: ' . $e->getMessage(), ['exception' => $e]);
 			return '';
