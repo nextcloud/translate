@@ -1,6 +1,6 @@
 {
-	"name": "nextcloud/llm",
-	"description": "A Large language model in nextcloud",
+	"name": "nextcloud/translate",
+	"description": "Translation in Nextcloud",
 	"type": "project",
 	"license": "AGPL-3.0-or-later",
 	"authors": [
@@ -15,7 +15,8 @@
 		"symfony/event-dispatcher": "^5.3.11",
 		"christophwurst/nextcloud": "dev-master@dev",
 		"psalm/phar": "^4.10",
-		"nextcloud/coding-standard": "^1.0"
+		"nextcloud/coding-standard": "^1.0",
+		"friendsofphp/php-cs-fixer": "^3"
 	},
 	"scripts": {
 		"lint": "find . -name \\*.php -not -path './vendor/*' -print0 | xargs -0 -n1 php -l",
@@ -32,7 +33,7 @@
 			"composer/package-versions-deprecated": true
 		},
 		"platform": {
-			"php": "7.4"
+			"php": "8.x"
 		}
 	},
 	"require": {

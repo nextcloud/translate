@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 // SPDX-FileCopyrightText: Marcel Klehr <mklehr@gmx.net>
 // SPDX-FileCopyrightText: Joas Schilling <code@schilljs.com>

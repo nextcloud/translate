@@ -1,5 +1,7 @@
 <?php
 declare(strict_types=1);
+// SPDX-FileCopyrightText: Marcel Klehr <mklehr@gmx.net>
+// SPDX-License-Identifier: AGPL-3.0-or-later
 namespace OCA\Translate\Provider;
 
 use OCA\Translate\Service\TranslateService;
@@ -10,8 +12,6 @@ use Psr\Log\LoggerInterface;
 
 class Translation implements ITranslationProvider {
 	private ICacheFactory $cacheFactory;
-
-	private array $localCache = [];
 
 	private TranslateService $translator;
 
@@ -40,6 +40,9 @@ class Translation implements ITranslationProvider {
 			if ($dir->isDot()) {
 				continue;
 			}
+			if (!$dir->isDir()) {
+				continue;
+			}
 			[$sourceLanguage, $targetLanguage] = explode('-', $dir->getFilename());
 			$availableLanguages[] = new LanguageTuple($sourceLanguage, $sourceLanguage, $targetLanguage, $targetLanguage);
 		}
@@ -48,17 +51,22 @@ class Translation implements ITranslationProvider {
 	}
 
 	public function detectLanguage(string $text): ?string {
-		return null;
+		try {
+			return $this->translator->detect($text);
+		} catch(\RuntimeException $e) {
+			$this->logger->warning('Language detection failed with: ' . $e->getMessage(), ['exception' => $e]);
+			return null;
+		}
 	}
 
 	public function translate(?string $fromLanguage, string $toLanguage, string $text): string {
-			$fromLanguage = $fromLanguage ?? $this->detectLanguage($text);
-			$model = $fromLanguage . '-' . $toLanguage;
-			try {
-				return $this->translator->seq2seq($model, $text);
-			}catch(\RuntimeException $e) {
-				$this->logger->warning('Translation failed with: ' . $e->getMessage(), ['exception' => $e]);
-				return '';
-			}
+		$fromLanguage = $fromLanguage ?? $this->detectLanguage($text);
+		$model = $fromLanguage . '-' . $toLanguage;
+		try {
+			return $this->translator->seq2seq($model, $text);
+		} catch(\RuntimeException $e) {
+			$this->logger->warning('Translation failed with: ' . $e->getMessage(), ['exception' => $e]);
+			return '';
+		}
 	}
 }

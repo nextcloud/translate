@@ -1,30 +1,16 @@
 <?php
-/*
- * Copyright (c) 2022 The Recognize contributors.
- * This file is licensed under the Affero General Public License version 3 or later. See the COPYING file.
- */
+declare(strict_types=1);
+// SPDX-FileCopyrightText: Marcel Klehr <mklehr@gmx.net>
+// SPDX-License-Identifier: AGPL-3.0-or-later
 
 namespace OCA\Translate\Command;
 
 use OCA\Translate\Service\TranslateService;
-use OCA\Recognize\Classifiers\Audio\MusicnnClassifier;
-use OCA\Recognize\Classifiers\Images\ClusteringFaceClassifier;
-use OCA\Recognize\Classifiers\Images\ImagenetClassifier;
-use OCA\Recognize\Classifiers\Images\LandmarksClassifier;
-use OCA\Recognize\Classifiers\Video\MovinetClassifier;
-use OCA\Recognize\Db\QueueFile;
-use OCA\Recognize\Exception\Exception;
-use OCA\Recognize\Service\Logger;
-use OCA\Recognize\Service\SettingsService;
-use OCA\Recognize\Service\StorageService;
-use OCP\Files\Config\ICachedMountInfo;
-use OCP\Files\Config\IUserMountCache;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
 class Translate extends Command {
-
 	private TranslateService $llm;
 
 	public function __construct(TranslateService $llm) {
@@ -57,7 +43,7 @@ class Translate extends Command {
 		try {
 			$output->writeln($this->llm->seq2seqGreedy($input->getArgument('input')));
 			return 0;
-		}catch(\RuntimeException $e) {
+		} catch(\RuntimeException $e) {
 			$output->writeln($e->getMessage());
 			return 1;
 		}

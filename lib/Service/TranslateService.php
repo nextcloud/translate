@@ -1,5 +1,7 @@
 <?php
-
+declare(strict_types=1);
+// SPDX-FileCopyrightText: Marcel Klehr <mklehr@gmx.net>
+// SPDX-License-Identifier: AGPL-3.0-or-later
 namespace OCA\Translate\Service;
 
 use OCP\IConfig;
@@ -8,9 +10,7 @@ use Symfony\Component\Process\Exception\ProcessTimedOutException;
 use Symfony\Component\Process\Exception\RuntimeException;
 use Symfony\Component\Process\Process;
 
-class TranslateService
-{
-
+class TranslateService {
 	private IConfig $config;
 	private string $nodeBinary;
 
@@ -30,7 +30,7 @@ class TranslateService
 	 * @throws \RuntimeException
 	 * @return string
 	 */
-	public function seq2seq(string $model, string $input, int $timeout = 5*60) : string {
+	public function seq2seq(string $model, string $input, int $timeout = 5 * 60) : string {
 		$command = [
 			$this->nodeBinary,
 			dirname(__DIR__, 2) . '/src/seq2seq.mjs',
@@ -73,7 +73,7 @@ class TranslateService
 	 * @throws \RuntimeException
 	 * @return string
 	 */
-	public function detect(string $text, int $timeout = 5*60) : string {
+	public function detect(string $text, int $timeout = 5 * 60) : string {
 		$command = [
 			$this->nodeBinary,
 			dirname(__DIR__, 2) . '/src/detect.mjs',
