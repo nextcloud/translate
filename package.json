@@ -1,11 +1,11 @@
 {
-  "name": "llm",
-  "description": "A Large language model in nextcloud",
+  "name": "translate",
+  "description": "Translation in nextcloud",
   "version": "0.0.1",
   "author": "Marcel Klehr <mklehr@gmx.net>",
   "contributors": [],
   "bugs": {
-    "url": "https://github.com/nextcloud/llm/issues"
+    "url": "https://github.com/nextcloud/translate/issues"
   },
   "license": "agpl",
   "private": true,
@@ -20,15 +20,10 @@
     "stylelint:fix": "stylelint css/*.css css/*.scss src/**/*.scss src/**/*.vue --fix"
   },
   "dependencies": {
-    "@nextcloud/axios": "^1.10.0",
-    "@nextcloud/dialogs": "^3.1.4",
-    "@nextcloud/router": "^2.0.0",
-    "@nextcloud/vue": "^5.4.0",
     "@tensorflow/tfjs": "^4.2.0",
     "cldpre": "^2.8.1-rc.3",
     "get-stdin": "^9.0.0",
-    "onnxruntime-node": "^1.13.1",
-    "vue": "^2.7.0"
+    "onnxruntime-node": "^1.13.1"
   },
   "browserslist": [
     "extends @nextcloud/browserslist-config"
@@ -36,12 +31,5 @@
   "engines": {
     "node": "^16.0.0",
     "npm": "^7.0.0 || ^8.0.0"
-  },
-  "devDependencies": {
-    "@nextcloud/babel-config": "^1.0.0",
-    "@nextcloud/browserslist-config": "^2.2.0",
-    "@nextcloud/eslint-config": "^8.0.0",
-    "@nextcloud/stylelint-config": "^2.1.2",
-    "@nextcloud/webpack-vue-config": "^5.2.1"
   }
 }
