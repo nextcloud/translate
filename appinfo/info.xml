@@ -9,7 +9,7 @@
     <name>Translate</name>
     <summary>Machine translation in nextcloud</summary>
     <description><![CDATA[A large language model in nextcloud]]></description>
-    <version>0.0.1</version>
+    <version>1.0.0</version>
     <licence>agpl</licence>
     <author mail="mklehr@gmx.net" homepage="https://marcelklehr.de">Marcel Klehr</author>
     <namespace>Translate</namespace>
