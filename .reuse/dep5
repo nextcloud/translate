@@ -3,7 +3,7 @@ Upstream-Name: Translate
 Upstream-Contact: Marcel Klehr <mklehr@gmx.net>
 Source: https://github.com/nextcloud/translate
 
-Files: package-lock.json package.json composer.json composer.lock
+Files: package-lock.json package.json composer.json composer.lock CHANGELOG.md src/**
 Copyright: Marcel Klehr <mklehr@gmx.net>
 License: AGPL-3.0-or-later
 
@@ -13,4 +13,4 @@ License: AGPL-3.0-or-later
 
 Files: models/*/decoder_model.onnx models/*/encoder_model.onnx models/*/vocab.json
 Copyright: Language Technology Research Group at the University of Helsinki
-License: cc-by-4.0
+License: CC-BY-4.0
