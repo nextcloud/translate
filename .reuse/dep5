@@ -10,7 +10,3 @@ License: AGPL-3.0-or-later
 Files: l10n/*.js l10n/*.json
 Copyright: Nextcloud translators <https://www.transifex.com/nextcloud/>
 License: AGPL-3.0-or-later
-
-Files: models/*/decoder_model.onnx models/*/encoder_model.onnx models/*/vocab.json
-Copyright: Language Technology Research Group at the University of Helsinki
-License: CC-BY-4.0
