@@ -34,7 +34,10 @@ async function main(model, inputText) {
 	const generatedSentences = []
 
 	for (const sentence of inputText.split('.')) {
-		let inputData = tokenize(sentence, vocab).map(token => vocab[token])
+		if(sentence.trim() === '') {
+			continue
+		}
+		let inputData = tokenize(sentence + '.', vocab).map(token => vocab[token])
 
 		let decoderInputData = Int32Array.from([pad_token_id])
 		let generation = ''
@@ -81,7 +84,7 @@ async function main(model, inputText) {
 		generatedSentences.push(generation.substring(1))
 	}
 
-	return generatedSentences.join('. ')
+	return generatedSentences.join(' ')
 }
 
 console.log(await main(
