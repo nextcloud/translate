@@ -1,6 +1,6 @@
 <?php
 // SPDX-FileCopyrightText: ownCloud, Inc.
-// SPDX-License-Identifier: AGPL-3.0
+// SPDX-License-Identifier: AGPL-3.0-only
 
 namespace OCA\Translate\Helper;
 
