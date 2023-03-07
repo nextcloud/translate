@@ -160,6 +160,8 @@ appstore:
 	--include=/appinfo \
 	--include=/bin \
 	--include=/vendor \
+	--include=/models \
+	--exclude=/models/** \
 	--exclude=**/*.map \
 	--exclude=/* \
 	--exclude=node \
