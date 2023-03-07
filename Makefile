@@ -46,6 +46,8 @@ appstore_package_name=$(appstore_build_directory)/$(app_name)
 npm=$(shell which npm 2> /dev/null)
 composer=$(shell which composer 2> /dev/null)
 
+LANGS = de-en  de-es  de-fr  de-zh  en-de  en-es  en-fr  en-zh  es-de  es-en  es-fr  fr-de  fr-en  fr-es  zh-de  zh-en
+
 all: build
 
 # Fetches the PHP and JS dependencies and compiles the JS. If no composer.json
@@ -92,11 +94,15 @@ model:
 ifeq (,$(wildcard $(CURDIR)/model))
 	pip3 install "optimum[exporters]"
 	pip3 install "torch"
-	export LANGS="de-en  de-es  de-fr  de-zh  en-de  en-es  en-fr  en-zh  es-de  es-en  es-fr  fr-de  fr-en  fr-es  zh-de  zh-en"
-	for LANG in $LANGS; do
+	for LANG in $(LANGS); do
 		mkdir models/$LANG; optimum-cli export onnx --model Helsinki-NLP/opus-mt-$LANG --task seq2seq-lm --for-ort models/$LANG/
 	done
 endif
+
+.PHONY: pack-models
+pack-models:
+	cd models; \
+	$(foreach lang,$(LANGS),tar cvzf $(lang).tar.gz $(lang);)
 
 # Removes the appstore build
 .PHONY: clean

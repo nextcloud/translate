@@ -28,4 +28,8 @@
         </install>
     </repair-steps>
 
+    <commands>
+        <command>OCA\Translate\Command\DownloadModels</command>
+    </commands>
+
 </info>
