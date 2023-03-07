@@ -32,7 +32,7 @@ class InstallDeps implements IRepairStep {
 	}
 
 	public function getName(): string {
-		return 'Install dependencies';
+		return 'Install dependencies for translate app';
 	}
 
 	public function run(IOutput $output): void {
