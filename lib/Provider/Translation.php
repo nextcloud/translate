@@ -6,22 +6,24 @@ namespace OCA\Translate\Provider;
 
 use OCA\Translate\Service\TranslateService;
 use OCP\ICacheFactory;
+use OCP\IL10N;
 use OCP\Translation\IDetectLanguageProvider;
 use OCP\Translation\ITranslationProvider;
 use OCP\Translation\LanguageTuple;
 use Psr\Log\LoggerInterface;
+use Punic\Language;
 
 class Translation implements ITranslationProvider, IDetectLanguageProvider {
-	private ICacheFactory $cacheFactory;
-
 	private TranslateService $translator;
 
 	private LoggerInterface $logger;
+	private IL10N $l;
 
-	public function __construct(ICacheFactory $cacheFactory, TranslateService $translator, LoggerInterface $logger) {
+	public function __construct(ICacheFactory $cacheFactory, TranslateService $translator, LoggerInterface $logger, IL10N $l) {
 		$this->cacheFactory = $cacheFactory;
 		$this->translator = $translator;
 		$this->logger = $logger;
+		$this->l = $l;
 	}
 
 	public function getName(): string {
@@ -29,11 +31,6 @@ class Translation implements ITranslationProvider, IDetectLanguageProvider {
 	}
 
 	public function getAvailableLanguages(): array {
-		$cache = $this->cacheFactory->createDistributed('translate');
-		if ($cached = $cache->get('languages')) {
-			return $cached;
-		}
-
 		$directoryIterator = new \DirectoryIterator(__DIR__ . '/../../models/');
 
 		$availableLanguages = [];
@@ -45,9 +42,11 @@ class Translation implements ITranslationProvider, IDetectLanguageProvider {
 				continue;
 			}
 			[$sourceLanguage, $targetLanguage] = explode('-', $dir->getFilename());
-			$availableLanguages[] = new LanguageTuple($sourceLanguage, $sourceLanguage, $targetLanguage, $targetLanguage);
+			// Punic is a nextcloud/server dependency
+			$sourceLanguageName = Language::getName($sourceLanguage, $this->l->getLanguageCode());
+			$targetLanguageName = Language::getName($targetLanguage, $this->l->getLanguageCode());
+			$availableLanguages[] = new LanguageTuple($sourceLanguage, $sourceLanguageName, $targetLanguage, $targetLanguageName);
 		}
-		$cache->set('languages', $availableLanguages, 3600);
 		return $availableLanguages;
 	}
 
