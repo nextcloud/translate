@@ -47,11 +47,11 @@ class DownloadModelsService {
 		if (!in_array($model, self::AVAILABLE_MODELS, true)) {
 			return false;
 		}
-		$targetPath = __DIR__ . '/../../models/'.$model;
-		if (file_exists($targetPath)) {
+		$modelPath = __DIR__ . '/../../models/'.$model;
+		if (file_exists($modelPath)) {
 			if ($force) {
 				// remove model directory
-				$it = new RecursiveDirectoryIterator($targetPath, FilesystemIterator::SKIP_DOTS);
+				$it = new RecursiveDirectoryIterator($modelPath, FilesystemIterator::SKIP_DOTS);
 				$files = new RecursiveIteratorIterator($it,
 					RecursiveIteratorIterator::CHILD_FIRST);
 				foreach ($files as $file) {
@@ -61,7 +61,7 @@ class DownloadModelsService {
 						unlink($file->getRealPath());
 					}
 				}
-				rmdir($targetPath);
+				rmdir($modelPath);
 			} else {
 				return true;
 			}
@@ -72,11 +72,8 @@ class DownloadModelsService {
 		$this->clientService->newClient()->get($archiveUrl, ['sink' => $archivePath, 'timeout' => $timeout]);
 		$tarManager = new TAR($archivePath);
 		$tarFiles = $tarManager->getFiles();
-		$modelFolder = $tarFiles[0];
-		$modelFiles = array_values(array_filter($tarFiles, function ($path) use ($modelFolder) {
-			return str_starts_with($path, $modelFolder . '/') || str_starts_with($path, $modelFolder);
-		}));
-		$tarManager->extractList($modelFiles, $targetPath, $modelFolder . '/');
+		$targetPath = __DIR__ . '/../../models/';
+		$tarManager->extractList($tarFiles, $targetPath, $modelPath . '/');
 		unlink($archivePath);
 		return true;
 	}
