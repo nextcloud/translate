@@ -8,7 +8,23 @@
     <id>translate</id>
     <name>Translate</name>
     <summary>Machine translation in nextcloud</summary>
-    <description><![CDATA[A large language model in nextcloud]]></description>
+    <description><![CDATA[
+Machine translation provider using Opus models by University of Helsinki
+
+The models run completely on your machine. No private data leaves your servers.
+
+Currently supported languages:
+
+ * English
+ * German
+ * French
+ * Spanish
+ * Chinese
+
+After installing this app you will need to run
+
+    occ translate:download-models
+]]></description>
     <version>1.1.0</version>
     <licence>agpl</licence>
     <author mail="mklehr@gmx.net" homepage="https://marcelklehr.de">Marcel Klehr</author>

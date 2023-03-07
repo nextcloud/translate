@@ -4,7 +4,30 @@ SPDX-License-Identifier: CC0-1.0
 -->
 
 # Translate
-Place this app in **nextcloud/apps/**
+Machine translation provider using Opus models by University of Helsinki
+
+The models run completely on your machine. No private data leaves your servers.
+
+Currently supported languages:
+
+* English
+* German
+* French
+* Spanish
+* Chinese
+
+## Install
+ * Place this app in **nextcloud/apps/**
+
+or 
+
+ * Install from the Nextcloud appstore
+
+After installing this app you will need to run:
+
+```
+$ php occ translate:download-models
+```
 
 ## Building the app
 
