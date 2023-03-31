@@ -29,6 +29,25 @@ After installing this app you will need to run:
 $ php occ translate:download-models
 ```
 
+### Downloading only specific languages
+```
+$ php occ translate:download-models <languages>
+```
+
+For example
+
+```
+$ php occ translate:download-models de en
+``` 
+
+will donwload both en->de and de->en.
+
+```
+$ php occ translate:download-models de en es
+```
+
+will download en->de, de->en, en->es, es->en, es->de, de->es
+
 ## Building the app
 
 The app can be built by using the provided Makefile by running:
