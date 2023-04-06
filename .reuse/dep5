@@ -8,5 +8,5 @@ Copyright: Marcel Klehr <mklehr@gmx.net>
 License: AGPL-3.0-or-later
 
 Files: l10n/*.js l10n/*.json
-Copyright: Nextcloud translators <https://www.transifex.com/nextcloud/>
+Copyright: Nextcloud translators <https://app.transifex.com/nextcloud/>
 License: AGPL-3.0-or-later
