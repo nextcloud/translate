@@ -66,7 +66,7 @@ class Translation implements ITranslationProvider, IDetectLanguageProvider {
 			return trim($this->translator->seq2seq($model, $text));
 		} catch(\RuntimeException $e) {
 			$this->logger->warning('Translation failed with: ' . $e->getMessage(), ['exception' => $e]);
-			return '';
+			throw $e;
 		}
 	}
 }
