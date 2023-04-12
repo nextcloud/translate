@@ -31,6 +31,15 @@ class TranslateService {
 	 * @return string
 	 */
 	public function seq2seq(string $model, string $input, int $timeout = 5 * 60) : string {
+		if (!in_array($model, DownloadModelsService::AVAILABLE_MODELS, true)) {
+			throw new \RuntimeException('Model not supported');
+		}
+
+		$modelPath = __DIR__ . '/../../models/'.$model;
+		if (!file_exists($modelPath)) {
+			throw new \RuntimeException('Model not downloaded');
+		}
+
 		$command = [
 			$this->nodeBinary,
 			dirname(__DIR__, 2) . '/src/seq2seq.mjs',
