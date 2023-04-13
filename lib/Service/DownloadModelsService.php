@@ -79,6 +79,6 @@ class DownloadModelsService {
 	}
 
 	public function getArchiveUrl(string $model): string {
-		return "https://github.com/nextcloud/translate/releases/download/v1.0.0/$model.tar.gz";
+		return "https://github.com/nextcloud-releases/translate/releases/download/v1.1.3/$model.tar.gz";
 	}
 }
