@@ -25,7 +25,7 @@ After installing this app you will need to run
 
     occ translate:download-models
 ]]></description>
-    <version>1.1.2</version>
+    <version>1.1.3</version>
     <licence>agpl</licence>
     <author mail="mklehr@gmx.net" homepage="https://marcelklehr.de">Marcel Klehr</author>
     <namespace>Translate</namespace>
