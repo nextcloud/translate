@@ -88,6 +88,7 @@ npm:
 ifeq (,$(wildcard $(CURDIR)/package.json))
 	cd js && $(npm) run build
 else
+	npm ci
 	npm run build
 endif
 
@@ -146,6 +147,7 @@ appstore:
 	mkdir -p $(sign_dir)
 	rm -rf $(appstore_build_directory)
 	mkdir -p $(appstore_build_directory)
+	composer install --no-dev
 	rsync -a --delete \
 	--include=/CHANGELOG.md \
 	--include=/README.md \
