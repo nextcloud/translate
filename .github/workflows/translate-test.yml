@@ -23,7 +23,7 @@ jobs:
       matrix:
         php-versions: [ '8.1' ]
         databases: [ 'sqlite' ]
-        server-versions: [ 'master' ]
+        server-versions: [ 'stable26', 'master' ]
 
     name: Test translate command on ${{ matrix.server-versions }} php@${{ matrix.php-versions }}
 
