@@ -46,6 +46,7 @@ After installing this app you will need to run
 
     <commands>
         <command>OCA\Translate\Command\DownloadModels</command>
+        <command>OCA\Translate\Command\Translate</command>
     </commands>
 
 </info>

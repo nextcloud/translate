@@ -24,7 +24,7 @@ class Translate extends Command {
 	 * @return void
 	 */
 	protected function configure() {
-		$this->setName('llm:translate')
+		$this->setName('translate')
 			->setDescription('Summarizes the input')
 			->addArgument('from')
 			->addArgument('to')
@@ -41,7 +41,7 @@ class Translate extends Command {
 	 */
 	protected function execute(InputInterface $input, OutputInterface $output): int {
 		try {
-			$output->writeln($this->llm->seq2seqGreedy($input->getArgument('input')));
+			$output->writeln($this->llm->seq2seq($input->getArgument('from') . '-' . $input->getArgument('to'), $input->getArgument('input')));
 			return 0;
 		} catch(\RuntimeException $e) {
 			$output->writeln($e->getMessage());
