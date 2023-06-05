@@ -2,10 +2,17 @@
 #
 # https://github.com/nextcloud/.github
 # https://docs.github.com/en/actions/learn-github-actions/sharing-workflows-with-your-organization
+# SPDX-FileCopyrightText: Nextcloud contributors
+# SPDX-License-Identifier: AGPL-3.0-or-later
 
 name: Lint php-cs
 
-on: pull_request
+on:
+  pull_request:
+  push:
+    branches:
+      - master
+      - stable*
 
 permissions:
   contents: read
@@ -27,7 +34,7 @@ jobs:
       - name: Set up php
         uses: shivammathur/setup-php@c5fc0d8281aba02c7fda07d3a70cc5371548067d # v2
         with:
-          php-version: 8.1
+          php-version: "7.4"
           coverage: none
           ini-file: development
         env:

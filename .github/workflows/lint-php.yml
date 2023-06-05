@@ -2,6 +2,8 @@
 #
 # https://github.com/nextcloud/.github
 # https://docs.github.com/en/actions/learn-github-actions/sharing-workflows-with-your-organization
+# SPDX-FileCopyrightText: Nextcloud contributors
+# SPDX-License-Identifier: AGPL-3.0-or-later
 
 name: Lint php
 
@@ -25,7 +27,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        php-versions: [ "8.0", "8.1", "8.2" ]
+        php-versions: [ "7.4", "8.0", "8.1", "8.2" ]
 
     name: php-lint
 
