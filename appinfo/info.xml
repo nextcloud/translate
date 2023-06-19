@@ -24,6 +24,17 @@ Currently supported languages:
 After installing this app you will need to run
 
     occ translate:download-models
+
+## Ethical AI Rating
+### Rating: 🟢
+
+Positive:
+* the software for training and inferencing of this model is open source
+* the trained model is freely available, and thus can be ran on-premises
+* the training data is freely available, making it possible to check or correct for bias or optimise the performance and CO2 usage.
+
+Learn more about the Nextcloud Ethical AI Rating [in our blog](https://nextcloud.com/blog/nextcloud-ethical-ai-rating/).
+
 ]]></description>
     <version>1.1.4</version>
     <licence>agpl</licence>
