@@ -25,6 +25,10 @@ After installing this app you will need to run
 
     occ translate:download-models
 
+Requirements:
+
+* x86 CPU
+
 ## Ethical AI Rating
 ### Rating: 🟢
 
