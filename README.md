@@ -16,6 +16,10 @@ Currently supported languages:
 * Spanish
 * Chinese
 
+Requirements:
+
+* x86 CPU
+
 ## Ethical AI Rating
 ### Rating: 🟢
 
