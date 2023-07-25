@@ -19,6 +19,7 @@ Currently supported languages:
 Requirements:
 
 * x86 CPU
+* GNU lib C (musl is not supported)
 
 ## Ethical AI Rating
 ### Rating: 🟢
