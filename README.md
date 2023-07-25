@@ -54,7 +54,7 @@ For example
 $ php occ translate:download-models de en
 ``` 
 
-will donwload both en->de and de->en.
+will download both en->de and de->en.
 
 ```
 $ php occ translate:download-models de en es
