@@ -60,7 +60,6 @@ build:
 ifneq (,$(wildcard $(CURDIR)/composer.json))
 	make composer
 endif
-	make model
 ifneq (,$(wildcard $(CURDIR)/package.json))
 	make npm
 endif
