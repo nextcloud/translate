@@ -7,19 +7,24 @@
     -->
     <id>translate</id>
     <name>Translate</name>
-    <summary>Machine translation in nextcloud</summary>
+    <summary>A Machine translation provider using Opus models by University of Helsinki running locally on CPU</summary>
     <description><![CDATA[
-Machine translation provider using Opus models by University of Helsinki
+A Machine translation provider using Opus models by University of Helsinki running locally on CPU.
 
 The models run completely on your machine. No private data leaves your servers.
 
 Currently supported languages:
 
- * English
- * German
- * French
- * Spanish
- * Chinese
+* English
+* German
+* French
+* Spanish
+* Chinese
+
+Model size:
+
+ * ~1GB per language pair
+ * ~10GB in total
 
 After installing this app you will need to run
 
@@ -47,6 +52,7 @@ Learn more about the Nextcloud Ethical AI Rating [in our blog](https://nextcloud
     <namespace>Translate</namespace>
     <category>tools</category>
     <bugs>https://github.com/nextcloud/translate/issues</bugs>
+    <screenshot>https://raw.githubusercontent.com/nextcloud/translate/main/screenshots/Logo.png</screenshot>
     <dependencies>
         <nextcloud min-version="26" max-version="27"/>
     </dependencies>

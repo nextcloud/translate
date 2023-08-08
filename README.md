@@ -3,8 +3,10 @@ SPDX-FileCopyrightText: Marcel Klehr <mklehr@gmx.net>
 SPDX-License-Identifier: CC0-1.0
 -->
 
+![](https://raw.githubusercontent.com/nextcloud/translate/main/screenshots/Logo.png)
+
 # Translate
-Machine translation provider using Opus models by University of Helsinki
+A Machine translation provider using Opus models by University of Helsinki running locally on CPU.
 
 The models run completely on your machine. No private data leaves your servers.
 
@@ -15,6 +17,11 @@ Currently supported languages:
 * French
 * Spanish
 * Chinese
+
+Model size:
+
+ * ~1GB per language pair
+ * ~10GB in total
 
 Requirements:
 
