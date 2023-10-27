@@ -69,10 +69,14 @@ class TranslateService {
 			}
 			return $buffer;
 		} catch (ProcessTimedOutException $e) {
-			$this->logger->warning($errOut);
+            if (isset($errOut)) {
+                $this->logger->warning($errOut);
+            }
 			throw new \RuntimeException('Translate process timeout');
 		} catch (RuntimeException $e) {
-			$this->logger->warning($errOut);
+            if (isset($errOut)) {
+                $this->logger->warning($errOut);
+            }
 			throw new \RuntimeException('Translate process failed');
 		}
 	}
@@ -111,10 +115,14 @@ class TranslateService {
 			}
 			return $buffer;
 		} catch (ProcessTimedOutException $e) {
-			$this->logger->warning($errOut);
+            if (isset($errOut)) {
+                $this->logger->warning($errOut);
+            }
 			throw new \RuntimeException('Language detection process timeout');
 		} catch (RuntimeException $e) {
-			$this->logger->warning($errOut);
+            if (isset($errOut)) {
+                $this->logger->warning($errOut);
+            }
 			throw new \RuntimeException('Language detection process failed');
 		}
 	}

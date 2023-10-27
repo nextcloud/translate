@@ -40,11 +40,13 @@ class DownloadModelsService {
 		$this->isCLI = $isCLI;
 	}
 
-	/**
-	 * @return bool
-	 * @throws \Exception
-	 */
-	public function download($model, $force = false) : bool {
+    /**
+     * @param string $model
+     * @param bool $force
+     * @return bool
+     * @throws \Exception
+     */
+	public function download(string $model, bool $force = false) : bool {
 		if (!in_array($model, self::AVAILABLE_MODELS, true)) {
 			return false;
 		}
@@ -55,7 +57,8 @@ class DownloadModelsService {
 				$it = new RecursiveDirectoryIterator($modelPath, FilesystemIterator::SKIP_DOTS);
 				$files = new RecursiveIteratorIterator($it,
 					RecursiveIteratorIterator::CHILD_FIRST);
-				foreach ($files as $file) {
+                /** @var \SplFileInfo $file */
+                foreach ($files as $file) {
 					if ($file->isDir()) {
 						rmdir($file->getRealPath());
 					} else {

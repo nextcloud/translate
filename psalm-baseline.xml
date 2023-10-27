@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<files psalm-version="4.x-dev@">
+  <file src="lib/Command/DownloadModels.php">
+    <UndefinedClass occurrences="1">
+      <code>Command</code>
+    </UndefinedClass>
+  </file>
+  <file src="lib/Command/Translate.php">
+    <UndefinedClass occurrences="1">
+      <code>Command</code>
+    </UndefinedClass>
+  </file>
+  <file src="lib/Helper/Archive.php">
+    <MissingParamType occurrences="1">
+      <code>$source</code>
+    </MissingParamType>
+  </file>
+  <file src="lib/Helper/TAR.php">
+    <MissingParamType occurrences="2">
+      <code>$path</code>
+      <code>$tmpFile</code>
+    </MissingParamType>
+    <MissingPropertyType occurrences="3">
+      <code>$cachedHeaders</code>
+      <code>$fileList</code>
+      <code>$path</code>
+    </MissingPropertyType>
+    <MissingReturnType occurrences="1">
+      <code>getHeader</code>
+    </MissingReturnType>
+    <MixedArgument occurrences="4">
+      <code>$path</code>
+      <code>$this-&gt;path</code>
+      <code>$tmpFile</code>
+      <code>$tmpFile</code>
+    </MixedArgument>
+    <MixedArrayAccess occurrences="7">
+      <code>$header['filename']</code>
+      <code>$header['filename']</code>
+      <code>$header['filename']</code>
+      <code>$header['filename']</code>
+      <code>$header['filename']</code>
+      <code>$stat['mtime']</code>
+      <code>$stat['size']</code>
+    </MixedArrayAccess>
+    <MixedAssignment occurrences="8">
+      <code>$files[]</code>
+      <code>$header</code>
+      <code>$header</code>
+      <code>$result</code>
+      <code>$stat</code>
+      <code>$stat</code>
+      <code>$this-&gt;tar</code>
+      <code>$this-&gt;tar</code>
+    </MixedAssignment>
+    <MixedInferredReturnType occurrences="11">
+      <code>?\PEAR_Error</code>
+      <code>bool</code>
+      <code>bool</code>
+      <code>bool</code>
+      <code>bool</code>
+      <code>bool</code>
+      <code>bool|resource</code>
+      <code>int</code>
+      <code>int</code>
+      <code>list&lt;string&gt;</code>
+      <code>string</code>
+    </MixedInferredReturnType>
+    <MixedReturnStatement occurrences="7">
+      <code>$result</code>
+      <code>$stat['mtime']</code>
+      <code>$stat['size']</code>
+      <code>$this-&gt;fileList</code>
+      <code>$this-&gt;tar-&gt;extract($dest)</code>
+      <code>$this-&gt;tar-&gt;extractInString($path)</code>
+      <code>$this-&gt;tar-&gt;extractList($list, $path, $removePath, $symlinks)</code>
+    </MixedReturnStatement>
+    <MixedReturnTypeCoercion occurrences="1">
+      <code>$files</code>
+    </MixedReturnTypeCoercion>
+    <PossiblyFalseArgument occurrences="2">
+      <code>strrpos($file, '.')</code>
+      <code>strrpos($path, '.')</code>
+    </PossiblyFalseArgument>
+    <PossiblyNullPropertyAssignmentValue occurrences="2">
+      <code>null</code>
+      <code>null</code>
+    </PossiblyNullPropertyAssignmentValue>
+    <RedundantConditionGivenDocblockType occurrences="2">
+      <code>$this-&gt;tar</code>
+      <code>$this-&gt;tar</code>
+    </RedundantConditionGivenDocblockType>
+    <UndefinedClass occurrences="4">
+      <code>?\PEAR_Error</code>
+      <code>\Archive_Tar</code>
+      <code>\Archive_Tar</code>
+      <code>\Archive_Tar</code>
+    </UndefinedClass>
+    <UndefinedDocblockClass occurrences="9">
+      <code>$this-&gt;tar</code>
+      <code>$this-&gt;tar</code>
+      <code>$this-&gt;tar</code>
+      <code>$this-&gt;tar</code>
+      <code>$this-&gt;tar</code>
+      <code>$this-&gt;tar</code>
+      <code>$this-&gt;tar</code>
+      <code>\Archive_Tar</code>
+      <code>private $tar = null;</code>
+    </UndefinedDocblockClass>
+  </file>
+  <file src="lib/Migration/InstallDeps.php">
+    <MixedArgumentTypeCoercion occurrences="1">
+      <code>$output</code>
+    </MixedArgumentTypeCoercion>
+  </file>
+</files>

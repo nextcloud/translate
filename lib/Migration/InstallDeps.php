@@ -47,9 +47,7 @@ class InstallDeps implements IRepairStep {
 		}
 	}
 
-	protected function installNodeBinary($output) : void {
-		$isARM = false;
-		$isMusl = false;
+	protected function installNodeBinary(IOutput $output) : void {
 		$uname = php_uname('m');
 
 		if ($uname === 'x86_64') {
@@ -59,22 +57,13 @@ class InstallDeps implements IRepairStep {
 			if ($version === null) {
 				$binaryPath = $this->downloadNodeBinary(self::NODE_SERVER_UNOFFICIAL, self::NODE_VERSION, 'x64', 'musl');
 				$version = $this->testBinary($binaryPath);
-				if ($version !== null) {
-					$isMusl = true;
-				}
 			}
 		} elseif ($uname === 'aarch64') {
 			$binaryPath = $this->downloadNodeBinary(self::NODE_SERVER_OFFICIAL, self::NODE_VERSION, 'arm64');
 			$version = $this->testBinary($binaryPath);
-			if ($version !== null) {
-				$isARM = true;
-			}
 		} elseif ($uname === 'armv7l') {
 			$binaryPath = $this->downloadNodeBinary(self::NODE_SERVER_OFFICIAL, self::NODE_VERSION, 'armv7l');
 			$version = $this->testBinary($binaryPath);
-			if ($version !== null) {
-				$isARM = true;
-			}
 		} else {
 			$output->warning('CPU architecture $uname is not supported.');
 			return;
@@ -98,6 +87,7 @@ class InstallDeps implements IRepairStep {
 
 			exec($cmd . ' 2>&1', $output, $returnCode);
 		} catch (\Throwable $e) {
+            return null;
 		}
 
 		if ($returnCode !== 0) {
