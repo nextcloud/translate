@@ -3,7 +3,7 @@ Upstream-Name: Translate
 Upstream-Contact: Marcel Klehr <mklehr@gmx.net>
 Source: https://github.com/nextcloud/translate
 
-Files: package-lock.json package.json composer.json composer.lock CHANGELOG.md src/** test/**
+Files: package-lock.json package.json composer.json composer.lock CHANGELOG.md src/** test/** psalm.xml psalm-baseline.xml
 Copyright: Marcel Klehr <mklehr@gmx.net>
 License: AGPL-3.0-or-later
 
