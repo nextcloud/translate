@@ -27,10 +27,13 @@ jobs:
         include:
           - php-versions: '8.0'
             server-versions: 'stable26'
+            databases: sqlite
           - php-versions: '8.0'
             server-versions: 'stable27'
+            databases: sqlite
           - php-versions: '8.3'
             server-versions: 'master'
+            databases: sqlite
 
     name: Test translate command on ${{ matrix.server-versions }} php@${{ matrix.php-versions }}
 
