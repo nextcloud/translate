@@ -26,7 +26,7 @@ class Translate extends Command {
 	 */
 	protected function configure() {
 		$this->setName('translate')
-			->setDescription('Summarizes the input')
+			->setDescription('Translates the input')
 			->addArgument('from')
 			->addArgument('to')
 			->addArgument('input');
