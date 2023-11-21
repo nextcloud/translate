@@ -4,6 +4,21 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.0.0] - 2023-11-21
+
+### Breaking changes
+
+- Drop support for Nextcloud v26 and Nextcloud v27
+
+### Added
+
+- enh: Add SetupChecks
+- enh: Add settings UI and threads setting Marcel Klehr 38 minutes ago
+
+### Fixed
+
+- fix(Translate): Correct command description
+
 ## [1.2.0] - 2023-10-31
 
 ### Changed
