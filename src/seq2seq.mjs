@@ -10,6 +10,8 @@ const __dirname = path.dirname(__filename);
 
 global.__dirname = __dirname
 
+const THREADS = parseInt(process.env.THREADS_THREADS)
+
 async function main(model, inputText) {
 	if (inputText === '-') {
 		inputText = await getStdin()
@@ -17,12 +19,20 @@ async function main(model, inputText) {
 
 	const encoderSession = await ort.InferenceSession.create(__dirname+'/../models/'+model+'/encoder_model.onnx', {
 		executionMode: 'sequential',
-		executionProviders: ['cuda', 'cpu']
+		executionProviders: ['cuda', 'cpu'],
+		...(THREADS && {
+			intraOpNumThreads: THREADS,
+			interOpNumThreads: THREADS,
+		})
 	})
 
 	const decoderSession = await ort.InferenceSession.create(__dirname+'/../models/'+model+'/decoder_model.onnx', {
 		executionMode: 'sequential',
-		executionProviders: ['cuda', 'cpu']
+		executionProviders: ['cuda', 'cpu'],
+		...(THREADS && {
+			intraOpNumThreads: THREADS,
+			interOpNumThreads: THREADS,
+		})
 	})
 
 	const vocab = (await import('../models/'+model+'/vocab.json', { assert: { type: "json" } })).default

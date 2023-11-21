@@ -19,9 +19,9 @@ class Translation implements ITranslationProvider, IDetectLanguageProvider {
 
 	private LoggerInterface $logger;
 	private IL10N $l;
-    private ICacheFactory $cacheFactory;
+	private ICacheFactory $cacheFactory;
 
-    public function __construct(ICacheFactory $cacheFactory, TranslateService $translator, LoggerInterface $logger, IL10N $l) {
+	public function __construct(ICacheFactory $cacheFactory, TranslateService $translator, LoggerInterface $logger, IL10N $l) {
 		$this->cacheFactory = $cacheFactory;
 		$this->translator = $translator;
 		$this->logger = $logger;
@@ -63,9 +63,9 @@ class Translation implements ITranslationProvider, IDetectLanguageProvider {
 
 	public function translate(?string $fromLanguage, string $toLanguage, string $text): string {
 		$fromLanguage = $fromLanguage ?? $this->detectLanguage($text);
-        if ($fromLanguage === null) {
-            throw new \RuntimeException('Could not detect language');
-        }
+		if ($fromLanguage === null) {
+			throw new \RuntimeException('Could not detect language');
+		}
 		$model = $fromLanguage . '-' . $toLanguage;
 		try {
 			return trim($this->translator->seq2seq($model, $text));

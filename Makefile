@@ -161,6 +161,8 @@ appstore:
 	--include=/appinfo \
 	--include=/bin \
 	--include=/vendor \
+	--include=/js \
+	--include=/templates \
 	--include=/models \
 	--exclude=/models/** \
 	--exclude=**/*.map \
