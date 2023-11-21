@@ -87,7 +87,7 @@ class InstallDeps implements IRepairStep {
 
 			exec($cmd . ' 2>&1', $output, $returnCode);
 		} catch (\Throwable $e) {
-            return null;
+			return null;
 		}
 
 		if ($returnCode !== 0) {

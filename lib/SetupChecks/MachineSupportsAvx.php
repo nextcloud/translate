@@ -35,7 +35,7 @@ class MachineSupportsAvx implements ISetupCheck {
 			$cpuinfo = file_get_contents('/proc/cpuinfo');
 			if ($cpuinfo === false) {
 				throw new \Exception();
-			} else if(strpos($cpuinfo, 'avx') === false) {
+			} elseif(strpos($cpuinfo, 'avx') === false) {
 				return SetupResult::error($this->l10n->t('Your server does not support AVX CPU instructions. The translate app will not work here.'));
 			}
 		} catch (\Throwable $e) {
