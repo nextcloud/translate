@@ -7,6 +7,9 @@ declare(strict_types=1);
 namespace OCA\Translate\AppInfo;
 
 use OCA\Translate\Provider\Translation;
+use OCA\Translate\SetupChecks\MachineSupportsAvx;
+use OCA\Translate\SetupChecks\ModelsDownloaded;
+use OCA\Translate\SetupChecks\NodejsWorks;
 use OCP\AppFramework\App;
 use OCP\AppFramework\Bootstrap\IBootContext;
 use OCP\AppFramework\Bootstrap\IBootstrap;
@@ -21,6 +24,9 @@ class Application extends App implements IBootstrap {
 
 	public function register(IRegistrationContext $context): void {
 		$context->registerTranslationProvider(Translation::class);
+		$context->registerSetupCheck(MachineSupportsAvx::class);
+		$context->registerSetupCheck(ModelsDownloaded::class);
+		$context->registerSetupCheck(NodejsWorks::class);
 	}
 
 	public function boot(IBootContext $context): void {
