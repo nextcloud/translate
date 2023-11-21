@@ -10,6 +10,11 @@
       <code>Command</code>
     </UndefinedClass>
   </file>
+  <file src="lib/Controller/AdminController.php">
+    <MixedArgumentTypeCoercion occurrences="1">
+      <code>$output</code>
+    </MixedArgumentTypeCoercion>
+  </file>
   <file src="lib/Helper/Archive.php">
     <MissingParamType occurrences="1">
       <code>$source</code>
