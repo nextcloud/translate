@@ -2,10 +2,8 @@
 
 declare(strict_types=1);
 
-/*
- * Copyright (c) 2022 The Recognize contributors.
- * This file is licensed under the Affero General Public License version 3 or later. See the COPYING file.
- */
+// SPDX-FileCopyrightText: The recognize contributors
+// SPDX-License-Identifier: AGPL-3.0-or-later
 
 namespace OCA\Translate\Controller;
 

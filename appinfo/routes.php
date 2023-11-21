@@ -1,12 +1,7 @@
 <?php
 
-/**
- * This file is licensed under the Affero General Public License version 3 or
- * later. See the COPYING file.
- *
- * @author Stefan Klemm <mail@stefan-klemm.de>
- * @copyright (c) 2014, Stefan Klemm
- */
+// SPDX-FileCopyrightText: Marcel Klehr <mklehr@gmx.net>
+// SPDX-License-Identifier: AGPL-3.0-or-later
 
 namespace OCA\Recognize\AppInfo;
 

@@ -1,5 +1,8 @@
 <?php
 
+// SPDX-FileCopyrightText: Marcel Klehr <mklehr@gmx.net>
+// SPDX-License-Identifier: AGPL-3.0-or-later
+
 namespace OCA\Translate\SetupChecks;
 
 use OCA\Translate\Service\SettingsService;
