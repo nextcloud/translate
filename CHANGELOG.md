@@ -13,7 +13,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 - enh: Add SetupChecks
-- enh: Add settings UI and threads setting Marcel Klehr 38 minutes ago
+- enh: Add settings UI and threads setting
 
 ### Fixed
 

@@ -147,6 +147,8 @@ appstore:
 	rm -rf $(appstore_build_directory)
 	mkdir -p $(appstore_build_directory)
 	composer install --no-dev
+	rm -rf node_modules
+	npm install --omit dev
 	rsync -a --delete \
 	--include=/CHANGELOG.md \
 	--include=/README.md \
