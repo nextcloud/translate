@@ -47,10 +47,17 @@ class TranslateService {
 			$model,
 			$input
 		];
+		$env = [];
+		// Set cores
+		$cores = $this->config->getAppValue('translate', 'threads', '0');
+		if ($cores !== '0') {
+			$env['TRANSLATE_THREADS'] = $cores;
+		}
 
 		$this->logger->debug('Running '.var_export($command, true));
 
 		$proc = new Process($command, __DIR__);
+		$proc->setEnv($env);
 		$proc->setTimeout($timeout);
 		try {
 			$proc->start();

@@ -74,4 +74,9 @@ Learn more about the Nextcloud Ethical AI Rating [in our blog](https://nextcloud
         <command>OCA\Translate\Command\Translate</command>
     </commands>
 
+    <settings>
+        <admin>OCA\Translate\Settings\AdminSettings</admin>
+        <admin-section>OCA\Translate\Settings\AdminSection</admin-section>
+    </settings>
+
 </info>
