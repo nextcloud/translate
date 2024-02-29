@@ -76,7 +76,7 @@ class InstallDeps implements IRepairStep {
 		}
 
 		// Write the app config
-		$this->config->setAppValue('translate', 'node_binary', $binaryPath);
+		$this->config->setAppValueString('node_binary', $binaryPath);
 	}
 
 	protected function testBinary(string $binaryPath): ?string {
