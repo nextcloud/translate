@@ -7,7 +7,8 @@ declare(strict_types=1);
 
 namespace OCA\Translate\Service;
 
-use OCP\IConfig;
+use OCP\AppFramework\Services\IAppConfig;
+use OCP\Exceptions\AppConfigTypeConflictException;
 
 class SettingsService {
 	/** @var array<string,string>  */
@@ -17,7 +18,7 @@ class SettingsService {
 	];
 
 	public function __construct(
-		private IConfig $config,
+		private IAppConfig $config,
 	) {
 	}
 
@@ -26,19 +27,24 @@ class SettingsService {
 	 * @return string
 	 */
 	public function getSetting(string $key): string {
-		return $this->config->getAppValue('translate', $key, self::DEFAULTS[$key]);
+		try {
+			return $this->config->getAppValueString($key, self::DEFAULTS[$key]);
+		} catch (AppConfigTypeConflictException $e) {
+			return self::DEFAULTS[$key];
+		}
 	}
 
 	/**
 	 * @param string $key
 	 * @param string $value
 	 * @return void
+	 * @throws AppConfigTypeConflictException
 	 */
 	public function setSetting(string $key, string $value): void {
 		if (!array_key_exists($key, self::DEFAULTS)) {
 			throw new \Exception('Unknown settings key '.$key);
 		}
-		$this->config->setAppValue('translate', $key, $value);
+		$this->config->setAppValueString($key, $value);
 	}
 
 	/**

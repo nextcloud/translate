@@ -5,6 +5,8 @@ declare(strict_types=1);
 // SPDX-License-Identifier: AGPL-3.0-or-later
 namespace OCA\Translate\Service;
 
+use OCP\AppFramework\Services\IAppConfig;
+use OCP\Exceptions\AppConfigTypeConflictException;
 use OCP\IConfig;
 use Psr\Log\LoggerInterface;
 use Symfony\Component\Process\Exception\ProcessTimedOutException;
@@ -12,14 +14,18 @@ use Symfony\Component\Process\Exception\RuntimeException;
 use Symfony\Component\Process\Process;
 
 class TranslateService {
-	private IConfig $config;
+	private IAppConfig $config;
 	private string $nodeBinary;
 
 	private LoggerInterface $logger;
 
-	public function __construct(IConfig $config, LoggerInterface $logger) {
+	public function __construct(IAppConfig $config, LoggerInterface $logger) {
 		$this->config = $config;
-		$this->nodeBinary = $this->config->getAppValue('translate', 'node_binary', '');
+		try {
+			$this->nodeBinary = $this->config->getAppValueString('node_binary', '');
+		} catch (AppConfigTypeConflictException $e) {
+			$this->nodeBinary = '';
+		}
 		$this->logger = $logger;
 	}
 
@@ -49,7 +55,11 @@ class TranslateService {
 		];
 		$env = [];
 		// Set cores
-		$cores = $this->config->getAppValue('translate', 'threads', '0');
+		try {
+			$cores = $this->config->getAppValueString('threads', '0');
+		} catch (AppConfigTypeConflictException $e) {
+			$cores = '0';
+		}
 		if ($cores !== '0') {
 			$env['TRANSLATE_THREADS'] = $cores;
 		}

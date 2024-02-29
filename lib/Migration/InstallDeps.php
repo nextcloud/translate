@@ -8,6 +8,7 @@ declare(strict_types=1);
 namespace OCA\Translate\Migration;
 
 use OCA\Translate\Helper\TAR;
+use OCP\AppFramework\Services\IAppConfig;
 use OCP\Http\Client\IClientService;
 use OCP\IConfig;
 use OCP\Migration\IOutput;
@@ -19,12 +20,12 @@ class InstallDeps implements IRepairStep {
 	public const NODE_SERVER_OFFICIAL = 'https://nodejs.org/dist/';
 	public const NODE_SERVER_UNOFFICIAL = 'https://unofficial-builds.nodejs.org/download/release/';
 
-	protected IConfig $config;
+	protected IAppConfig $config;
 	private string $binaryDir;
 	private IClientService $clientService;
 	private LoggerInterface $logger;
 
-	public function __construct(IConfig $config, IClientService $clientService, LoggerInterface $logger) {
+	public function __construct(IAppConfig $config, IClientService $clientService, LoggerInterface $logger) {
 		$this->config = $config;
 		$this->binaryDir = dirname(__DIR__, 2) . '/bin/';
 		$this->clientService = $clientService;
@@ -36,7 +37,7 @@ class InstallDeps implements IRepairStep {
 	}
 
 	public function run(IOutput $output): void {
-		$existingBinary = $this->config->getAppValue('translate', 'node_binary', '');
+		$existingBinary = $this->config->getAppValueString('node_binary', '');
 		if ($existingBinary !== '') {
 			$version = $this->testBinary($existingBinary);
 			if ($version === null) {
