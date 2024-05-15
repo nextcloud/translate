@@ -18,9 +18,6 @@
 			<NcNoteCard v-if="nodejs === false" type="error">
 				{{ t('translate', 'Could not execute the node.js executable. You may need to set the path to a working executable manually. (See below.)') }}
 			</NcNoteCard>
-			<NcNoteCard v-if="avx === false" type="error">
-				{{ t('translate', 'It seems that your server processor does not support AVX instructions. Without AVX instructions this app currently does not work.') }}
-			</NcNoteCard>
 		</NcSettingsSection>
 		<NcSettingsSection :title="t('translate', 'Resources')">
 			<p>{{ t('translate', 'By default all available CPU cores will be used which may put your system under considerable load. To avoid this, you can limit the amount of CPU Cores used.') }}</p>
