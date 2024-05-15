@@ -25,7 +25,7 @@ class Translate extends Command {
 	 * @return void
 	 */
 	protected function configure() {
-		$this->setName('translate')
+		$this->setName('translate:translate')
 			->setDescription('Translates the input')
 			->addArgument('from')
 			->addArgument('to')
