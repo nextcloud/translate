@@ -1,0 +1,18 @@
+# SPDX-FileCopyrightText: Marcel Klehr <mklehr@gmx.net>
+# SPDX-License-Identifier: AGPL-3.0-or-later
+version = 1
+SPDX-PackageName = "Translate"
+SPDX-PackageSupplier = "Marcel Klehr <mklehr@gmx.net>"
+SPDX-PackageDownloadLocation = "https://github.com/nextcloud/translate"
+
+[[annotations]]
+path = ["package-lock.json", "package.json", "composer.json", "composer.lock", "CHANGELOG.md", "src/**", "test/**", "psalm.xml", "psalm-baseline.xml"]
+precedence = "aggregate"
+SPDX-FileCopyrightText = "Marcel Klehr <mklehr@gmx.net>"
+SPDX-License-Identifier = "AGPL-3.0-or-later"
+
+[[annotations]]
+path = ["l10n/**.js", "l10n/**.json"]
+precedence = "aggregate"
+SPDX-FileCopyrightText = "Nextcloud translators <https://app.transifex.com/nextcloud/>"
+SPDX-License-Identifier = "AGPL-3.0-or-later"
