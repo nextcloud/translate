@@ -7,7 +7,7 @@
   "bugs": {
     "url": "https://github.com/nextcloud/translate/issues"
   },
-  "license": "agpl",
+  "license": "AGPL-3.0-or-later",
   "private": true,
   "scripts": {
     "build": "NODE_ENV=production webpack --progress --config webpack.js",
