@@ -6,6 +6,9 @@ SPDX-License-Identifier: CC0-1.0
 ![](https://raw.githubusercontent.com/nextcloud/translate/main/screenshots/Logo.png)
 
 # Translate
+
+[![REUSE status](https://api.reuse.software/badge/github.com/nextcloud/translate)](https://api.reuse.software/info/github.com/nextcloud/translate)
+
 A Machine translation provider using Opus models by University of Helsinki running locally on CPU.
 
 The models run completely on your machine. No private data leaves your servers.
