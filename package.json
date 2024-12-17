@@ -1,7 +1,7 @@
 {
   "name": "translate",
   "description": "Translation in nextcloud",
-  "version": "2.2.0",
+  "version": "3.0.0-dev.0",
   "author": "Marcel Klehr <mklehr@gmx.net>",
   "contributors": [],
   "bugs": {
