@@ -13,23 +13,9 @@ A Machine translation provider using Opus models by University of Helsinki runni
 
 The models run completely on your machine. No private data leaves your servers.
 
-Currently supported languages:
+### This app is deprecated
 
-* English
-* German
-* French
-* Spanish
-* Chinese
-
-Model size:
-
- * ~1GB per language pair
- * ~10GB in total
-
-Requirements:
-
-* x86 CPU
-* GNU lib C (musl is not supported)
+in favor of [translate2](https://github.com/nextcloud/translate2)
 
 #### Nextcloud All-in-One:
 With Nextcloud AIO, this app is not going to work because AIO uses musl. However you can use [this community container](https://github.com/nextcloud/all-in-one/tree/main/community-containers/libretranslate) as replacement for this app.
